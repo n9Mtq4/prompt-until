@@ -69,10 +69,7 @@ def is_in_list(object, list):
     :param list: The list to look for the object in
     :return: A boolean if the object is in the list
     """
-    for o in list:
-        if o == object:
-            return True
-    return False
+    return object in list
 
 
 def is_in_dictionary(keyname, dictionary):
@@ -82,10 +79,7 @@ def is_in_dictionary(keyname, dictionary):
     :param dictionary: The dictionary to look for it in
     :return: A boolean if the object is in the list
     """
-    for key in dictionary:
-        if key == keyname:
-            return True
-    return False
+    return keyname in dictionary
 
 
 def is_bool(boolean):
@@ -110,10 +104,12 @@ def parse_bool(boolean):
     :param boolean: The boolean in STRING format
     :return: A boolean
     """
-    b = boolean.lower()
-    if b == "true" or b == "yes" or b == "y" or b == "t":
+    boolean = boolean.lower()
+    true_values = ['true', 'yes', 'y', 't']
+    false_values = ['false', 'no', 'n', 'f']
+    if boolean in true_values:
         return True
-    elif b == "false" or b == "no" or b == "n" or b == "f":
+    elif boolean in false_values:
         return False
     else:
         raise ValueError("Invalid Boolean %s" % boolean)
